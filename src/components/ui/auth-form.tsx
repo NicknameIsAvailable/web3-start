@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 import {
   Form,
   FormControl,
@@ -8,10 +8,10 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { useForm } from "react-hook-form";
-import ProfileBadge from "@/components/ui/profile-badge";
+  FormMessage
+} from '@/components/ui/form';
+import { useForm } from 'react-hook-form';
+import ProfileBadge from '@/components/ui/profile-badge';
 
 const AuthForm = () => {
   const form = useForm();
@@ -20,7 +20,7 @@ const AuthForm = () => {
     <Form {...form}>
       <FormField
         control={form.control}
-        name="username"
+        name='username'
         render={({ field }) => (
           <FormItem>
             <FormControl>

@@ -1,0 +1,38 @@
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "useTabs": false,
+  "trailingComma": "none",
+  "arrowParens": "always",
+  "printWidth": 100,
+  "jsxSingleQuote": true,
+  "jsxBracketSameLine": false,
+  "quoteProps": "as-needed",
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "*.js,*.jsx,*.ts,*.tsx",
+      "options": {
+        "parser": "babel",
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "useTabs": false,
+        "trailingComma": "none",
+        "arrowParens": "always",
+        "printWidth": 100,
+        "jsxSingleQuote": true,
+        "jsxBracketSameLine": false,
+        "quoteProps": "as-needed",
+        "endOfLine": "auto"
+      }
+    },
+    {
+      "files": "*.css,*.scss,*.less",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}
