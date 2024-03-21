@@ -2,6 +2,20 @@ import React from 'react';
 import { ThemeToggler } from '@/components/ui/theme-toggler';
 import ProfileBadge from '@/components/ui/profile-badge';
 import Link from 'next/link';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from '../sheet';
+import { Button } from '../button';
+import { MenuIcon } from 'lucide-react';
+import { LanguageToggler } from '@/components/ui/language-toggler';
+import LayoutDrawer from '@/components/ui/layout/layout-drawer';
 
 const Header = () => {
   return (
@@ -10,13 +24,13 @@ const Header = () => {
       <header className='top-0 fixed w-screen p-2 bg-background/70 border-b border-border backdrop-blur-xl'>
         <div className='container flex justify-between'>
           <div className='flex gap-6'>
-            <Link href='/'>
-              <h1 className='text-xl font-bold'>WEB3 Start</h1>
+            <Link href='/public'>
+              <h1 className='text-xl font-bold'>Awesome Chat</h1>
             </Link>
           </div>
           <div className='flex gap-4'>
-            <ThemeToggler />
             <ProfileBadge />
+            <LayoutDrawer />
           </div>
         </div>
       </header>

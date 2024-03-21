@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import Social from '@/components/ui/social';
 import Telegram from '/public/icons/telegram.svg';
-import Image from 'next/image';
 
 type Link = {
   name: string;
@@ -16,11 +15,6 @@ const Footer = () => {
       name: 'Github',
       url: 'https://github.com/NicknameIsAvailable/web3-start',
       icon: <GitHubLogoIcon />
-    },
-    {
-      name: 'Telegram',
-      url: 'https://t.me/NicknameIsAvailable',
-      icon: <Image className='h-4 w-4' src={Telegram} alt='Telegram' />
     }
   ];
 

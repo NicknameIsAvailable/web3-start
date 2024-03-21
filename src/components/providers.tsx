@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { ReactNode } from 'react';
 import { type State, WagmiProvider } from 'wagmi';
 
-import { config } from '@/app/config';
+import { config } from '@/web3/config';
 import { ThemeProvider } from '@/components/theme-provider';
 import { MetaMaskProvider } from '@metamask/sdk-react';
 import { sdkOptions } from '@/web3/metamask';
@@ -18,12 +18,12 @@ const queryClient = new QueryClient();
 
 export function Providers({ children, initialState }: Props) {
   return (
-    <ThemeProvider>
-      <WagmiProvider config={config} initialState={initialState}>
+    <WagmiProvider config={config} initialState={initialState}>
+      <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
         <QueryClientProvider client={queryClient}>
           <MetaMaskProvider sdkOptions={sdkOptions}>{children}</MetaMaskProvider>
         </QueryClientProvider>
-      </WagmiProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </WagmiProvider>
   );
 }
