@@ -38,7 +38,6 @@ import { config } from '@/web3/config';
 import Chains from '@/components/ui/layout/chains';
 
 const LayoutDrawer = () => {
-  const [bnbBalance, setBnbBalance] = useState<any>();
   const { address } = useAccount();
 
   const account = useAccount({
@@ -60,7 +59,7 @@ const LayoutDrawer = () => {
           <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
         <div className='py-6 flex flex-col gap-3 w-full justify-center items-center'>
-          {account && address &&
+          {account && address && (
             <Card className='flex flex-col gap-2 items-center p-4'>
               <div className='flex gap-3'>
                 <Image
@@ -77,13 +76,9 @@ const LayoutDrawer = () => {
                   <EthLogo className='mr-4 h-8 w-8' />
                   {`${data?.formatted} ${data?.symbol}` || '0x0'}
                 </Badge>
-                <Badge className='flex-1 flex items-center justify-center'>
-                  <BnbLogo className='mr-4 h-8 w-8' />
-                  {bnbBalance || '0x0'}
-                </Badge>
               </div>
             </Card>
-          }
+          )}
 
           <Chains />
 

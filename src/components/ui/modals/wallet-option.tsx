@@ -15,17 +15,22 @@ interface WalletOptionProps {
   label?: string;
   disabled?: boolean;
   type?: 'reset' | 'button' | 'submit' | undefined;
-  connector: Connector
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  connector: Connector;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const WalletOptions: React.FC<WalletOptionsProps> = ({ label, disabled, type, sideFunction }) => {
+export const WalletOptions: React.FC<WalletOptionsProps> = ({
+  label,
+  disabled,
+  type,
+  sideFunction
+}) => {
   const { connectors, connect } = useConnect();
 
   const handleConnect = (connector: Connector, event: React.MouseEvent<HTMLButtonElement>) => {
     connect({ connector });
-    if (sideFunction) sideFunction(event)
-  }
+    if (sideFunction) sideFunction(event);
+  };
 
   return (
     <div className={cn(connectors.length > 1 && 'grid grid-cols-2 gap-4')}>
@@ -37,15 +42,21 @@ export const WalletOptions: React.FC<WalletOptionsProps> = ({ label, disabled, t
           connector={connector}
           label={label}
           onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-            handleConnect(connector, event)
+            handleConnect(connector, event);
           }}
         />
       ))}
     </div>
   );
-}
+};
 
-const WalletOption: React.FC<WalletOptionProps> = ({ label, connector, onClick, disabled, type }) => {
+const WalletOption: React.FC<WalletOptionProps> = ({
+  label,
+  connector,
+  onClick,
+  disabled,
+  type
+}) => {
   const [ready, setReady] = React.useState(false);
 
   React.useEffect(() => {
@@ -67,4 +78,4 @@ const WalletOption: React.FC<WalletOptionProps> = ({ label, connector, onClick, 
       {label} {connector.name}
     </Button>
   );
-}
+};

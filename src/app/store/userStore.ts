@@ -1,15 +1,13 @@
 import { create } from 'zustand';
 
 export interface User {
-  id: string
-  nickname: string
-  address: string
+  id: string;
+  nickname: string;
+  address: string;
 }
 
 interface userState {
-  data: User,
+  data: User;
 }
 
-const useUserStore = create((set) => ({
-
-}))
+const useUserStore = create((set) => ({}));

@@ -23,9 +23,7 @@ const AuthForm = () => {
         name='username'
         render={({ field }) => (
           <FormItem>
-            <FormControl>
-              {/*<ProfileBadge />*/}
-            </FormControl>
+            <FormControl>{/*<ProfileBadge />*/}</FormControl>
             <FormMessage />
           </FormItem>
         )}

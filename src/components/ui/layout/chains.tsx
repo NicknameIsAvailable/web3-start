@@ -14,11 +14,9 @@ const Chains = () => {
     config
   });
 
-  console.log(123, chains);
-
   if (chains)
     return (
-      <Collapsible open={isOpen} onOpenChange={setIsOpen} className='w-[350px] space-y-2'>
+      <Collapsible open={isOpen} onOpenChange={setIsOpen} className='w-full space-y-2'>
         <div className='flex items-center justify-between space-x-4 px-4'>
           <h4 className='text-sm font-semibold'>Chains</h4>
           <CollapsibleTrigger asChild>
