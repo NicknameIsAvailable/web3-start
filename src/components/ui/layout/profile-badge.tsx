@@ -31,7 +31,7 @@ const ProfileBadge = () => {
 
   return (
     <>
-      {address ? (
+      {address && account ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Badge className='cursor-pointer'>

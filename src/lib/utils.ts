@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { web3 } from '@/web3';
+const bcrypt = require("bcrypt");
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -55,4 +56,28 @@ export const getAccounts = async () => {
     console.log('Error getting accounts: ', e);
     return [];
   }
+};
+
+const saltRounds = 10
+
+export const hash = (password: string): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    bcrypt.genSalt(saltRounds, (err: Error | undefined, salt: string) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+        return;
+      }
+
+      bcrypt.hash(password, salt, (err: Error | undefined, hash: string) => {
+        if (err) {
+          console.error(err);
+          reject(err);
+          return;
+        }
+
+        resolve(hash);
+      });
+    });
+  });
 };

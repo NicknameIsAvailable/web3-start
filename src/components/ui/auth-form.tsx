@@ -11,7 +11,7 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
-import ProfileBadge from '@/components/ui/profile-badge';
+import ProfileBadge from '@/components/ui/layout/profile-badge';
 
 const AuthForm = () => {
   const form = useForm();
@@ -24,7 +24,7 @@ const AuthForm = () => {
         render={({ field }) => (
           <FormItem>
             <FormControl>
-              <ProfileBadge />
+              {/*<ProfileBadge />*/}
             </FormControl>
             <FormMessage />
           </FormItem>

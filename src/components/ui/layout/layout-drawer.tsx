@@ -60,28 +60,30 @@ const LayoutDrawer = () => {
           <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
         <div className='py-6 flex flex-col gap-3 w-full justify-center items-center'>
-          <Card className='flex flex-col gap-2 items-center p-4'>
-            <div className='flex gap-3'>
-              <Image
-                className='w-8 h-8 mr-4'
-                width={48}
-                height={48}
-                src={connector?.icon || ''}
-                alt={connector?.name || ''}
-              />
-              <h5 className='text-xl'>{formatAddress(address, 20) || ''}</h5>
-            </div>
-            <div className='w-full flex gap-2'>
-              <Badge className='flex-1 flex items-center justify-center'>
-                <EthLogo className='mr-4 h-8 w-8' />
-                {`${data?.formatted} ${data?.symbol}` || '0x0'}
-              </Badge>
-              <Badge className='flex-1 flex items-center justify-center'>
-                <BnbLogo className='mr-4 h-8 w-8' />
-                {bnbBalance || '0x0'}
-              </Badge>
-            </div>
-          </Card>
+          {account && address &&
+            <Card className='flex flex-col gap-2 items-center p-4'>
+              <div className='flex gap-3'>
+                <Image
+                  className='w-8 h-8 mr-4'
+                  width={48}
+                  height={48}
+                  src={connector?.icon || ''}
+                  alt={connector?.name || ''}
+                />
+                <h5 className='text-xl'>{formatAddress(address, 20) || ''}</h5>
+              </div>
+              <div className='w-full flex gap-2'>
+                <Badge className='flex-1 flex items-center justify-center'>
+                  <EthLogo className='mr-4 h-8 w-8' />
+                  {`${data?.formatted} ${data?.symbol}` || '0x0'}
+                </Badge>
+                <Badge className='flex-1 flex items-center justify-center'>
+                  <BnbLogo className='mr-4 h-8 w-8' />
+                  {bnbBalance || '0x0'}
+                </Badge>
+              </div>
+            </Card>
+          }
 
           <Chains />
 

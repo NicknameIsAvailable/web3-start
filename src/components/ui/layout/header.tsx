@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeToggler } from '@/components/ui/theme-toggler';
-import ProfileBadge from '@/components/ui/profile-badge';
+import ProfileBadge from '@/components/ui/layout/profile-badge';
 import Link from 'next/link';
 import {
   Sheet,

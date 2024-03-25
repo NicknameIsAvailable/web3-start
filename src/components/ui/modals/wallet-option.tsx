@@ -4,23 +4,48 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
-export function WalletOptions() {
+interface WalletOptionsProps {
+  label?: string;
+  disabled?: boolean;
+  type?: 'reset' | 'button' | 'submit' | undefined;
+  sideFunction?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+interface WalletOptionProps {
+  label?: string;
+  disabled?: boolean;
+  type?: 'reset' | 'button' | 'submit' | undefined;
+  connector: Connector
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+export const WalletOptions: React.FC<WalletOptionsProps> = ({ label, disabled, type, sideFunction }) => {
   const { connectors, connect } = useConnect();
+
+  const handleConnect = (connector: Connector, event: React.MouseEvent<HTMLButtonElement>) => {
+    connect({ connector });
+    if (sideFunction) sideFunction(event)
+  }
 
   return (
     <div className={cn(connectors.length > 1 && 'grid grid-cols-2 gap-4')}>
       {connectors.map((connector) => (
         <WalletOption
+          disabled={disabled}
           key={connector.uid}
+          type={type}
           connector={connector}
-          onClick={() => connect({ connector })}
+          label={label}
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+            handleConnect(connector, event)
+          }}
         />
       ))}
     </div>
   );
 }
 
-function WalletOption({ connector, onClick }: { connector: Connector; onClick: () => void }) {
+const WalletOption: React.FC<WalletOptionProps> = ({ label, connector, onClick, disabled, type }) => {
   const [ready, setReady] = React.useState(false);
 
   React.useEffect(() => {
@@ -31,7 +56,7 @@ function WalletOption({ connector, onClick }: { connector: Connector; onClick: (
   }, [connector]);
 
   return (
-    <Button variant='outline' className='w-full' disabled={!ready} onClick={onClick}>
+    <Button type={type} disabled={disabled || !ready} className='w-full' onClick={onClick}>
       <Image
         className='w-6 h-6 mr-4'
         width={24}
@@ -39,7 +64,7 @@ function WalletOption({ connector, onClick }: { connector: Connector; onClick: (
         src={connector.icon || ''}
         alt={connector.name}
       />
-      {connector.name}
+      {label} {connector.name}
     </Button>
   );
 }
