@@ -24,8 +24,8 @@ const Header = () => {
       <header className='top-0 fixed w-screen p-2 bg-background/70 border-b border-border backdrop-blur-xl'>
         <div className='container flex justify-between'>
           <div className='flex gap-6'>
-            <Link href='/public'>
-              <h1 className='text-xl font-bold'>Awesome Chat</h1>
+            <Link href='/'>
+              <h1 className='text-xl font-bold'>WEB3 start</h1>
             </Link>
           </div>
           <div className='flex gap-4'>

@@ -73,7 +73,6 @@ const LayoutDrawer = () => {
               </div>
               <div className='w-full flex gap-2'>
                 <Badge className='flex-1 flex items-center justify-center'>
-                  <EthLogo className='mr-4 h-8 w-8' />
                   {`${data?.formatted} ${data?.symbol}` || '0x0'}
                 </Badge>
               </div>

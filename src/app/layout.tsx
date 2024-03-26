@@ -10,6 +10,7 @@ import { config } from '@/web3/config';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Providers } from '@/components/providers';
 import { headers } from 'next/headers';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Providers initialState={initialState}>
           <Header />
           <main className='min-h-screen'>{children}</main>
+          <Toaster />
           <Footer />
         </Providers>
       </body>

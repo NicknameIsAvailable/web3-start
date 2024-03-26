@@ -16,6 +16,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
 import { disconnect } from '@wagmi/core';
+import Link from 'next/link';
+import { PersonIcon } from '@radix-ui/react-icons';
 
 const ProfileBadge = () => {
   const { address } = useAccount();
@@ -50,6 +52,12 @@ const ProfileBadge = () => {
               <LogOut className='w-6 h-6 mr-4' />
               Log Out
             </DropdownMenuItem>
+            <Link href='/profile'>
+              <DropdownMenuItem>
+                <PersonIcon className='w-6 h-6 mr-4' />
+                View Profile
+              </DropdownMenuItem>
+            </Link>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (

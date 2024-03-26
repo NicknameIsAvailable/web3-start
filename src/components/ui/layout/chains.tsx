@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
-import { useChains } from 'wagmi';
+import { useAccount, useChains, useSwitchChain } from 'wagmi';
 import { config } from '@/web3/config';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../collapsible';
 import { Button } from '../button';
 import { ChevronsUpDown } from 'lucide-react';
+import { Chain } from 'viem';
 
 const Chains = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -13,6 +14,16 @@ const Chains = () => {
   const chains = useChains({
     config
   });
+
+  const { chain } = useAccount();
+
+  const { switchChain } = useSwitchChain();
+
+  const handleChangeChain = (chain: Chain) => {
+    switchChain({
+      chainId: chain.id
+    });
+  };
 
   if (chains)
     return (
@@ -27,14 +38,19 @@ const Chains = () => {
           </CollapsibleTrigger>
         </div>
         {!isOpen && (
-          <div className='rounded-md border px-4 py-3 font-mono text-sm'>{chains[0]?.name}</div>
+          <div className='rounded-md border px-4 py-3 font-mono text-sm'>{chain?.name}</div>
         )}
 
         <CollapsibleContent className='space-y-2'>
           {chains.map((chain: any) => (
-            <div key={chain.name} className='rounded-md border px-4 py-3 font-mono text-sm'>
+            <Button
+              variant='ghost'
+              className='w-full'
+              onClick={() => handleChangeChain(chain)}
+              key={chain.name}
+            >
               {chain.name}
-            </div>
+            </Button>
           ))}
         </CollapsibleContent>
       </Collapsible>
